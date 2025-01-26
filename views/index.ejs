@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>database usernames</title>
+  </head>
+  <body>
+    <h1>Database usernames</h1>
+    <a href="/new">Add a user</a>
+    <ul>
+      <% if (locals.users) {%> <% users.forEach(user => { %>
+      <li>ID: <%= user.id %>, Name: <%= user.username %></li>
+      <%}); %> <%} %>
+    </ul>
+  </body>
+</html>
