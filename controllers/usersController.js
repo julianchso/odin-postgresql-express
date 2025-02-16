@@ -9,7 +9,7 @@ usersListGet = async (req, res) => {
   });
 };
 
-usersCreateGet = (req, res) => {
+usersCreateGet = async (req, res) => {
   res.render('createUser', {
     title: 'Create user',
   });
