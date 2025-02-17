@@ -1,4 +1,4 @@
-const { client } = require('pg');
+const { Client } = require('pg');
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS usernames (
@@ -8,20 +8,24 @@ CREATE TABLE IF NOT EXISTS usernames (
 
 INSERT INTO usernames (username)
 VALUES
-  ('Bryan'),
-  ('Odin'),
-  ('Damon');
+  ('Mao'),
+  ('Clinton'),
+  ('Gorbachev');
 `;
 
 async function main() {
   console.log('seeding...');
-  const client = new Client({
-    connectionString: 'postgresql://julianso:nissanr34@localhost:5432/top_users',
-  });
-  await client.connect();
-  await client.query(SQL);
-  await client.end();
-  console.log('done seeding');
+  try {
+    const client = new Client({
+      connectionString: 'postgresql://julianso:1234@127.0.0.1:5432/top_users',
+    });
+    await client.connect();
+    await client.query(SQL);
+    await client.end();
+    console.log('done seeding');
+  } catch (error) {
+    console.error('error seeding:', error);
+  }
 }
 
 main();
