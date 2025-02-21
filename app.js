@@ -1,9 +1,9 @@
-const express = require('express');
+import express, { urlencoded } from 'express';
 const app = express();
-const usersRouter = require('./routes/usersRouter');
+import usersRouter from './routes/usersRouter.js';
 
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true }));
+app.use(urlencoded({ extended: true }));
 app.use('/', usersRouter);
 
 const PORT = process.env.PORT || 3000;

@@ -1,41 +1,35 @@
-const db = require('../db/queries');
+import { getAllUsernames, insertUsername, deleteUsernamesAll } from '../db/queries.js';
 
-usersListGet = async (req, res) => {
-  const usernames = await db.getAllUsernames();
-  console.log('Usernames: ', usernames);
+const usersListGet = async (req, res) => {
+  const usernames = await getAllUsernames();
+  // console.log('Usernames: ', usernames);
   res.render('index', {
     title: 'User list',
     users: usernames,
   });
 };
 
-usersCreateGet = async (req, res) => {
+const usersCreateGet = async (req, res) => {
   res.render('createUser', {
     title: 'Create user',
   });
 };
 
-usersCreatePost = async (req, res) => {
+const usersCreatePost = async (req, res) => {
   const { username } = req.body;
-  await db.insertUsername(username);
-  console.log('username to be saved: ', req.body.username);
+  await insertUsername(username);
+  // console.log('username to be saved: ', req.body.username);
   res.redirect('/');
 };
 
-usersDeleteAllGet = async (req, res) => {
-  await db.deleteUsernamesAll();
+const usersDeleteAllGet = async (req, res) => {
+  await deleteUsernamesAll();
   res.redirect('/');
 };
 
-// usersDeleteAllPost = async (req, res) => {
-//   await db.deleteUsernamesAll();
-//   res.redirect('/');
-// };
-
-module.exports = {
+export default {
   usersListGet,
   usersCreateGet,
   usersCreatePost,
   usersDeleteAllGet,
-  // usersDeleteAllPost,
 };

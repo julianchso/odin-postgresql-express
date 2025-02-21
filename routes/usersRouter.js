@@ -1,5 +1,5 @@
-const { Router } = require('express');
-const usersController = require('../controllers/usersController');
+import { Router } from 'express';
+import usersController from '../controllers/usersController.js';
 const usersRouter = Router();
 
 usersRouter.get('/', usersController.usersListGet);
@@ -7,7 +7,8 @@ usersRouter.get('/', usersController.usersListGet);
 usersRouter.get('/new', usersController.usersCreateGet);
 usersRouter.post('/new', usersController.usersCreatePost);
 
-usersRouter.get('/delete', usersController.usersDeleteAllGet);
-// usersRouter.delete('/delete', usersController.usersDeleteAllPost);
+usersRouter.get('/search', usersController.usersSearchGet);
 
-module.exports = usersRouter;
+usersRouter.get('/delete', usersController.usersDeleteAllGet);
+
+export default usersRouter;
