@@ -12,7 +12,11 @@ async function insertUsername(username) {
 }
 
 async function searchUsername(query) {
-  await pool.query('SELECT * FROM usernames WHERE username LIKE %$1%', [query]);
+  // await pool.query('SELECT * FROM usernames WHERE username SIMILAR TO ($1)', [query]);
+  const result = await pool.query('SELECT * FROM usernames WHERE username LIKE $1', [`%${query}%`]);
+  console.log('query:', query);
+  console.log('result:', result);
+  return result;
 }
 
 async function deleteUsernamesAll() {
