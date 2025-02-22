@@ -9,7 +9,7 @@
     <h1><%= title %></h1>
     <ul>
       <% searchedUsernames.forEach(user => { %>
-      <li>ID: <%= users.id %>, Name: <%= users.username %></li>
+      <li>ID: <%= user.id %>, Name: <%= user.username %></li>
       <%}); %>
     </ul>
     <a href="/">Back to home</a>

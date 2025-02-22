@@ -12,9 +12,10 @@ async function insertUsername(username) {
 }
 
 async function searchUsername(query) {
-  // await pool.query('SELECT * FROM usernames WHERE username SIMILAR TO ($1)', [query]);
   const result = await pool.query('SELECT * FROM usernames WHERE username LIKE $1', [`%${query}%`]);
-  console.log('query:', query);
+  const rows = result.rows;
+  console.log('rows:', rows);
+  return rows;
   console.log('result:', result);
   return result;
 }
